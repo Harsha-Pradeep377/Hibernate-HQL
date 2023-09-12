@@ -1,9 +1,11 @@
 
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
 import entity.CustomerEntity;
+import entity.OrderEntity;
 import repository.CustomerRepository;
 
 
@@ -36,11 +38,13 @@ public class App {
         //Object[] data = customerRepository.getCutsomerSummery();
         //System.out.println(Arrays.toString(data));
 
-        List<Object[]> data = customerRepository.getCutsomerSummeryByProvince();
-        for (Object[] row : data) {
-        System.out.println(Arrays.toString(row));
-        }
+        //List<Object[]> data = customerRepository.getCutsomerSummeryByProvince();
+        //for (Object[] row : data) {
+        //System.out.println(Arrays.toString(row));
+        //}
 
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        List<OrderEntity> entities = customerRepository.getOrdersBeforeDateAndProvince(sdf.parse("2009-01-01"), "Western");
+        entities.forEach(System.out::println);
     }
 }
