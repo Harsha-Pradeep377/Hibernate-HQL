@@ -1,13 +1,15 @@
 
 
+import java.util.List;
+
 import entity.CustomerEntity;
-import repository.CustomerRepositary;
+import repository.CustomerRepository;
 
 
 public class App {
     public static void main(String[] args) throws Exception {
-        CustomerRepositary customerRepositary = new CustomerRepositary();
-        CustomerEntity customerEntity = customerRepositary.getCustomer("C001");
-        System.out.println(customerEntity.toString());
+        CustomerRepository customerRepository = new CustomerRepository();
+        List<CustomerEntity> custEntities = customerRepository.getAllCustomers();
+        custEntities.forEach(System.out::println);
     }
 }
