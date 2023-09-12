@@ -1,9 +1,13 @@
-import org.hibernate.Session;
 
-import util.SessionFactoryConfiguration;
+
+import entity.CustomerEntity;
+import repository.CustomerRepositary;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
-       Session session = SessionFactoryConfiguration.getInstance().getSession();
+        CustomerRepositary customerRepositary = new CustomerRepositary();
+        CustomerEntity customerEntity = customerRepositary.getCustomer("C001");
+        System.out.println(customerEntity.toString());
     }
 }
